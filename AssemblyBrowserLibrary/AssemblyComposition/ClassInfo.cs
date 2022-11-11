@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AssemblyBrowserLibrary.AssemblyComposition
+﻿namespace AssemblyBrowserLibrary.AssemblyComposition
 {
     public class ClassInfo
     {
@@ -12,5 +6,17 @@ namespace AssemblyBrowserLibrary.AssemblyComposition
         public List<FieldInfo> Fields { get; set; }
         public List<PropertyInfo> Properties { get; set; }
         public List<MethodInfo> Methods { get; set; }
+
+        public ClassInfo(string className, List<FieldInfo> fields, List<PropertyInfo> properties, List<MethodInfo> methods)
+        {
+            ClassName = className;
+            Fields = fields;
+            Properties = properties;
+            Methods = methods;
+        }
+
+        public ClassInfo()
+        {
+        }
     }
 }
