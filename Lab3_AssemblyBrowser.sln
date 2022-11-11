@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32630.192
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyBrowserApplication", "AssemblyBrowserApplication\AssemblyBrowserApplication.csproj", "{CA93367A-B8F4-44D3-82D1-8D9A8F6509DF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyBrowserLibrary", "AssemblyBrowserLibrary\AssemblyBrowserLibrary.csproj", "{BEC2A87B-F5AF-465A-BAEE-7E8952D31A98}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CA93367A-B8F4-44D3-82D1-8D9A8F6509DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA93367A-B8F4-44D3-82D1-8D9A8F6509DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA93367A-B8F4-44D3-82D1-8D9A8F6509DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA93367A-B8F4-44D3-82D1-8D9A8F6509DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BEC2A87B-F5AF-465A-BAEE-7E8952D31A98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BEC2A87B-F5AF-465A-BAEE-7E8952D31A98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BEC2A87B-F5AF-465A-BAEE-7E8952D31A98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BEC2A87B-F5AF-465A-BAEE-7E8952D31A98}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F8A52755-15FD-4CDE-9C31-F6CCEB11F601}
+	EndGlobalSection
+EndGlobal
