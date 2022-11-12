@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Windows;
-using System.Windows.Input;
 using AssemblyBrowserApplication.Model;
-using AssemblyBrowserLibrary.AssemblyComposition;
-
 
 namespace AssemblyBrowserApplication.ViewModel
 {
@@ -22,6 +17,7 @@ namespace AssemblyBrowserApplication.ViewModel
 
         private string _assemblyPath = "";
         private List<Node> _assemblyTree;
+        private OpenFileDialogCommand? _openFileDialog;
 
         public string AssemblyPath
         {
@@ -40,7 +36,7 @@ namespace AssemblyBrowserApplication.ViewModel
             set => _assemblyTree = value;
         }
 
-        private OpenFileDialogCommand? _openFileDialog;
+        
         public OpenFileDialogCommand OpenFileDialog
         {
             get
@@ -52,7 +48,6 @@ namespace AssemblyBrowserApplication.ViewModel
 
         private void OpenAssembly()
         {
-
             var dialog = new Microsoft.Win32.OpenFileDialog();
             dialog.FileName = "Assembly";
             dialog.DefaultExt = ".dll";
