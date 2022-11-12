@@ -54,7 +54,7 @@ namespace Tests
             var namespace2 = _assemblyInfo.Namespaces.Where(nsp => nsp.NamespaceName == correctNamespace2);
 
             Assert.AreEqual(correctNumberOfTypes1, namespace1.First().Classes.Count);
-            Assert.AreEqual(correctNumberOfTypes2, namespace1.First().Classes.Count);
+            Assert.AreEqual(correctNumberOfTypes2, namespace2.First().Classes.Count);
         }
 
         [Test]
