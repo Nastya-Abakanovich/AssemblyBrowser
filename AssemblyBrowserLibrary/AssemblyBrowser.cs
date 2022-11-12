@@ -11,7 +11,7 @@ namespace AssemblyBrowserLibrary
         {
             try
             {
-                _assembly = System.Reflection.Assembly.Load(filename);
+                _assembly = System.Reflection.Assembly.LoadFrom(filename);
             }
             catch
             {
