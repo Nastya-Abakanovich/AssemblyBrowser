@@ -29,7 +29,6 @@ namespace AssemblyBrowserApplication.ViewModel
             set
             {
                 _assemblyPath = value;
-                // D:\Университет\5 сем\СПП\Лабы\ExampleLibrary\ExampleLibrary\bin\Debug\net6.0\ExampleLibrary.dll
                 AssemblyTree = AssemblyInfoToTreeConverter.Convert(Core.GetTree(AssemblyPath));                
                 OnPropertyChanged(nameof(AssemblyTree));
             }

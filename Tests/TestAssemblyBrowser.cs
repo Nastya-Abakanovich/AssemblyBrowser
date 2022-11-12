@@ -53,16 +53,16 @@ namespace Tests
             var namespace1 = _assemblyInfo.Namespaces.Where(nsp => nsp.NamespaceName == correctNamespace1);
             var namespace2 = _assemblyInfo.Namespaces.Where(nsp => nsp.NamespaceName == correctNamespace2);
 
-            Assert.AreEqual(correctNumberOfTypes1, namespace1.First().Classes.Count);
-            Assert.AreEqual(correctNumberOfTypes2, namespace2.First().Classes.Count);
+            Assert.AreEqual(correctNumberOfTypes1, namespace1.First().Types.Count);
+            Assert.AreEqual(correctNumberOfTypes2, namespace2.First().Types.Count);
         }
 
         [Test]
         public void GetAssemblyInfo_AssemblyInfo_ReturnCorrectNameOfTypes()
         {
-            string currTypes1 = _assemblyInfo.Namespaces[2].Classes[0].ClassName;
-            string currTypes2 = _assemblyInfo.Namespaces[3].Classes[0].ClassName;
-            string currTypes3 = _assemblyInfo.Namespaces[3].Classes[1].ClassName;
+            string currTypes1 = _assemblyInfo.Namespaces[2].Types[0].TypeName;
+            string currTypes2 = _assemblyInfo.Namespaces[3].Types[0].TypeName;
+            string currTypes3 = _assemblyInfo.Namespaces[3].Types[1].TypeName;
 
             Assert.AreEqual(correctTypeName1, currTypes1);
             Assert.AreEqual(correctTypeName2, currTypes2);
@@ -70,11 +70,23 @@ namespace Tests
         }
 
         [Test]
+        public void GetAssemblyInfo_AssemblyInfo_ReturnCorrectTypeOfTypes()
+        {
+            string currTypes1 = _assemblyInfo.Namespaces[2].Types[0].Type;
+            string currTypes2 = _assemblyInfo.Namespaces[3].Types[0].Type;
+            string currTypes3 = _assemblyInfo.Namespaces[3].Types[1].Type;
+
+            Assert.AreEqual("Class", currTypes1);
+            Assert.AreEqual("Class", currTypes2);
+            Assert.AreEqual("Class", currTypes3);
+        }
+
+        [Test]
         public void GetAssemblyInfo_AssemblyInfo_ReturnCorrectNumberOfFields()
         {
-            var currFields1 = _assemblyInfo.Namespaces[2].Classes[0].Fields;
-            var currFields2 = _assemblyInfo.Namespaces[3].Classes[0].Fields;
-            var currFields3 = _assemblyInfo.Namespaces[3].Classes[1].Fields;
+            var currFields1 = _assemblyInfo.Namespaces[2].Types[0].Fields;
+            var currFields2 = _assemblyInfo.Namespaces[3].Types[0].Fields;
+            var currFields3 = _assemblyInfo.Namespaces[3].Types[1].Fields;
 
             Assert.AreEqual(2, currFields1.Count);
             Assert.AreEqual(4, currFields2.Count);
@@ -84,7 +96,7 @@ namespace Tests
         [Test]
         public void GetAssemblyInfo_AssemblyInfo_ReturnCorrectNameOfFields()
         {
-            var currFieldsPerson = _assemblyInfo.Namespaces[3].Classes[1].Fields;
+            var currFieldsPerson = _assemblyInfo.Namespaces[3].Types[1].Fields;
             var countCorrectFields = currFieldsPerson.Where(f => f.FieldName == "Name" || f.FieldName == "Surname" || f.FieldName == "City");
 
             Assert.AreEqual(3, countCorrectFields.Count());
@@ -93,7 +105,7 @@ namespace Tests
         [Test]
         public void GetAssemblyInfo_AssemblyInfo_ReturnCorrectTypeOfFields()
         {
-            var currFieldsPerson = _assemblyInfo.Namespaces[3].Classes[1].Fields;
+            var currFieldsPerson = _assemblyInfo.Namespaces[3].Types[1].Fields;
             var countCorrectFields = currFieldsPerson.Where(f => f.FieldType == "String");
 
             Assert.AreEqual(3, countCorrectFields.Count());
@@ -102,9 +114,9 @@ namespace Tests
         [Test]
         public void GetAssemblyInfo_AssemblyInfo_ReturnCorrectNumberOfProperties()
         {
-            var currProperties1 = _assemblyInfo.Namespaces[2].Classes[0].Properties;
-            var currProperties2 = _assemblyInfo.Namespaces[3].Classes[0].Properties;
-            var currProperties3 = _assemblyInfo.Namespaces[3].Classes[1].Properties;
+            var currProperties1 = _assemblyInfo.Namespaces[2].Types[0].Properties;
+            var currProperties2 = _assemblyInfo.Namespaces[3].Types[0].Properties;
+            var currProperties3 = _assemblyInfo.Namespaces[3].Types[1].Properties;
 
             Assert.AreEqual(3, currProperties1.Count);
             Assert.AreEqual(0, currProperties2.Count);
@@ -114,7 +126,7 @@ namespace Tests
         [Test]
         public void GetAssemblyInfo_AssemblyInfo_ReturnCorrectNameOfProperties()
         {
-            var currPropertiesPerson = _assemblyInfo.Namespaces[3].Classes[1].Properties;
+            var currPropertiesPerson = _assemblyInfo.Namespaces[3].Types[1].Properties;
             var countCorrectProperties = currPropertiesPerson.Where(p => p.PropertyName == "Email" || p.PropertyName == "PhoneNumber" || p.PropertyName == "Address");
 
             Assert.AreEqual(3, countCorrectProperties.Count());
@@ -123,7 +135,7 @@ namespace Tests
         [Test]
         public void GetAssemblyInfo_AssemblyInfo_ReturnCorrectTypeOfProperties()
         {
-            var countCorrectProperties = _assemblyInfo.Namespaces[3].Classes[1].Properties.Where(p => p.PropertyType == "String");
+            var countCorrectProperties = _assemblyInfo.Namespaces[3].Types[1].Properties.Where(p => p.PropertyType == "String");
 
             Assert.AreEqual(3, countCorrectProperties.Count());
         }
@@ -131,7 +143,7 @@ namespace Tests
         [Test]
         public void GetAssemblyInfo_AssemblyInfo_ReturnCorrectNameOfMethods()
         {
-            var currMethodsPerson = _assemblyInfo.Namespaces[3].Classes[1].Methods;
+            var currMethodsPerson = _assemblyInfo.Namespaces[3].Types[1].Methods;
             var countCorrectMethods = currMethodsPerson.Where(m => m.MethodName == "SendMessageByMail" || m.MethodName == "SendMessageByEmail");
 
             Assert.AreEqual(2, countCorrectMethods.Count());
@@ -140,9 +152,9 @@ namespace Tests
         [Test]
         public void GetAssemblyInfo_AssemblyInfo_ReturnCorrectReturnValueOfMethods()
         {
-            var currMethodsPerson = _assemblyInfo.Namespaces[3].Classes[1].Methods;
+            var currMethodsPerson = _assemblyInfo.Namespaces[3].Types[1].Methods;
             var methodSendMess = currMethodsPerson.Where(m => m.MethodName == "SendMessageByMail").First();
-            var currMethodsHouse = _assemblyInfo.Namespaces[2].Classes[0].Methods;
+            var currMethodsHouse = _assemblyInfo.Namespaces[2].Types[0].Methods;
             var methodGetHouseAge = currMethodsHouse.Where(m => m.MethodName == "GetHouseAge").First();
 
             Assert.AreEqual("Boolean", methodSendMess.ReturnType);
@@ -152,7 +164,7 @@ namespace Tests
         [Test]
         public void GetAssemblyInfo_AssemblyInfo_ReturnCorrectParametersOfMethods()
         {
-            var countCorrectParams = _assemblyInfo.Namespaces[3].Classes[1].Methods.Where(m => m.MethodName == "SendMessageByMail").First().Parameters;
+            var countCorrectParams = _assemblyInfo.Namespaces[3].Types[1].Methods.Where(m => m.MethodName == "SendMessageByMail").First().Parameters;
 
             Assert.AreEqual(1, countCorrectParams.Count());
             Assert.AreEqual("message", countCorrectParams.First().FieldName);

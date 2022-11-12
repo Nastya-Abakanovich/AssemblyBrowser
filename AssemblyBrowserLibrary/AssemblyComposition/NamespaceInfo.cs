@@ -3,12 +3,12 @@
     public class NamespaceInfo
     {
         public string NamespaceName { get; set; }
-        public List<ClassInfo> Classes { get; set; }
+        public List<TypeInfo> Types { get; set; }
 
-        public NamespaceInfo(string namespaceName, List<ClassInfo> classes)
+        public NamespaceInfo(string namespaceName, List<TypeInfo> types)
         {
             NamespaceName = namespaceName;
-            Classes = classes;
+            Types = types;
         }
 
         public NamespaceInfo()

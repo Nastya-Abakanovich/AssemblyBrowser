@@ -1,21 +1,23 @@
 ﻿namespace AssemblyBrowserLibrary.AssemblyComposition
 {
-    public class ClassInfo
+    public class TypeInfo
     {
-        public string ClassName { get; set; }
+        public string TypeName { get; set; }
+        public string Type { get; set; }
         public List<FieldInfo> Fields { get; set; }
         public List<PropertyInfo> Properties { get; set; }
         public List<MethodInfo> Methods { get; set; }
 
-        public ClassInfo(string className, List<FieldInfo> fields, List<PropertyInfo> properties, List<MethodInfo> methods)
+        public TypeInfo(string typeName, string type, List<FieldInfo> fields, List<PropertyInfo> properties, List<MethodInfo> methods)
         {
-            ClassName = className;
+            TypeName = typeName;
+            Type = type;
             Fields = fields;
             Properties = properties;
             Methods = methods;
         }
 
-        public ClassInfo()
+        public TypeInfo()
         {
         }
     }

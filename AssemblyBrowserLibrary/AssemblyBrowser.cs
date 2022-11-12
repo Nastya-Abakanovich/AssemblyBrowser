@@ -41,29 +41,37 @@ namespace AssemblyBrowserLibrary
             {
                 NamespaceInfo namespaceInfo = new NamespaceInfo();
                 namespaceInfo.NamespaceName = namespaceName;
-                namespaceInfo.Classes = GetClassInfo(namespaceName);
+                namespaceInfo.Types = GetTypeInfo(namespaceName);
                 namespaceInfos.Add(namespaceInfo);
             }
 
             return namespaceInfos;
         }
 
-        private List<ClassInfo> GetClassInfo(string namespaceName)
+        private List<TypeInfo> GetTypeInfo(string namespaceName)
         {
             IEnumerable<Type> types = _assembly.GetTypes().Where(type => type.Namespace == namespaceName);
-            List<ClassInfo> classInfos = new List<ClassInfo>();
+            List<TypeInfo> typeInfos = new List<TypeInfo>();
 
-            foreach (Type classType in types)
+            foreach (Type type in types)
             {
-                ClassInfo classInfo = new ClassInfo();
-                classInfo.ClassName = classType.Name;
-                classInfo.Fields = GetFieldInfo(classType);
-                classInfo.Properties = GetPropertyInfo(classType);
-                classInfo.Methods = GetMethodInfo(classType);
-                classInfos.Add(classInfo);
+                TypeInfo typeInfo = new TypeInfo();
+                typeInfo.TypeName = type.Name;
+                if (type.IsClass)
+                    typeInfo.Type = "Class";
+                else if (type.IsInterface)
+                    typeInfo.Type = "Interface";
+                else if (type.IsEnum)
+                    typeInfo.Type = "Enam";
+                else 
+                    typeInfo.Type = "Type";
+                typeInfo.Fields = GetFieldInfo(type);
+                typeInfo.Properties = GetPropertyInfo(type);
+                typeInfo.Methods = GetMethodInfo(type);
+                typeInfos.Add(typeInfo);
             }
 
-            return classInfos;
+            return typeInfos;
         }
 
         private List<FieldInfo> GetFieldInfo(Type classType)

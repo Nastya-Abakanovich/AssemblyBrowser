@@ -16,28 +16,28 @@ namespace AssemblyBrowserApplication.ViewModel
             {
                 Node node = new Node();
                 node.Header = "Namespace: " + namespaceInfo.NamespaceName;
-                node.Nodes = GetClassNodes(namespaceInfo);
+                node.Nodes = GetTypeNodes(namespaceInfo);
                 tree.Add(node);
             }
 
             return tree;
         }
 
-        private static List<Node> GetClassNodes(NamespaceInfo namespaceInfo)
+        private static List<Node> GetTypeNodes(NamespaceInfo namespaceInfo)
         {
             List<Node> nodes = new List<Node>();
-            foreach (var classInfo in namespaceInfo.Classes)
+            foreach (var typeInfo in namespaceInfo.Types)
             {
                 Node node = new Node();
-                node.Header = "Type: " + classInfo.ClassName;
-                node.Nodes = GetMethodNodes(classInfo);
+                node.Header = "Type: " + typeInfo.Type + " " + typeInfo.TypeName;
+                node.Nodes = GetMethodNodes(typeInfo);
                 nodes.Add(node);
             }
 
             return nodes;
         }
 
-        private static List<Node> GetMethodNodes(ClassInfo classInfo)
+        private static List<Node> GetMethodNodes(TypeInfo classInfo)
         {
             List<Node> nodes = new List<Node>();
 
